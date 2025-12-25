@@ -83,10 +83,14 @@ body{
 }
 
 /* TEXT */
-.cardText{
-  font-size:15px;
-  line-height:1.7;
-  white-space:pre-wrap;   /* VERY IMPORTANT */
-  color:#333;
+.card{
+  width:380px;      /* increased width */
+  height:475px;     /* 4:5 ratio maintained */
+  background:white;
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.2);
+  overflow-y:auto;
+  animation:cardIn 0.8s ease forwards;
 }
 
