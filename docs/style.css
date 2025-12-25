@@ -67,23 +67,6 @@ body{
 
 /* INTERFACE 3 */
 .card{
-  width:320px;   /* 4:5 ratio */
-  height:400px;
-  background:white;
-  border-radius:22px;
-  padding:20px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
-  overflow-y:auto;
-  animation:cardIn 0.8s ease forwards;
-}
-
-@keyframes cardIn{
-  from{opacity:0; transform:scale(0.95)}
-  to{opacity:1; transform:scale(1)}
-}
-
-/* TEXT */
-.card{
   width:380px;      /* increased width */
   height:475px;     /* 4:5 ratio maintained */
   background:white;
@@ -94,3 +77,43 @@ body{
   animation:cardIn 0.8s ease forwards;
 }
 
+
+@keyframes cardIn{
+  from{opacity:0; transform:scale(0.95)}
+  to{opacity:1; transform:scale(1)}
+}
+
+/* TEXT */
+.cardText{
+  font-size:16px;
+  line-height:1.8;
+  white-space:pre-wrap;
+  background: linear-gradient(
+    90deg,
+    #ff4fa3,
+    #ff8fcf,
+    #ff4fa3
+  );
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientMove 6s ease-in-out infinite,
+             textFadeUp 1.2s ease forwards;
+  opacity:0;
+}
+@keyframes gradientMove{
+  0%{background-position:0% center}
+  50%{background-position:100% center}
+  100%{background-position:0% center}
+}
+
+@keyframes textFadeUp{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
