@@ -1,45 +1,45 @@
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:'Poppins', sans-serif;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
 }
 
 body{
+  width:100%;
   height:100vh;
   background:linear-gradient(135deg,#ffe6ef,#fff1f6);
-  display:flex;
-  align-items:center;
-  justify-content:center;
   overflow:hidden;
 }
 
-/* ---------- Interfaces ---------- */
-.interface{
+/* ---------- Screens ---------- */
+.screen{
   display:none;
   width:100%;
-  height:100%;
+  height:100vh;
+  display:flex;
   align-items:center;
   justify-content:center;
   flex-direction:column;
 }
 
-.interface.show{
+.show{
   display:flex;
 }
 
 /* ---------- Interface 1 ---------- */
 .helloText{
   font-size:48px;
-  font-weight:800;
+  font-weight:bold;
   color:#ff2f92;
   cursor:pointer;
   animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
-  0%,100%{ transform:scale(1); }
-  50%{ transform:scale(1.08); }
+  0%{transform:scale(1)}
+  50%{transform:scale(1.07)}
+  100%{transform:scale(1)}
 }
 
 /* ---------- Password Box ---------- */
@@ -48,14 +48,13 @@ body{
   padding:40px;
   border-radius:20px;
   text-align:center;
-  box-shadow:0 12px 35px rgba(0,0,0,0.15);
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
 .passwordBox p{
-  margin-bottom:20px;
   font-size:20px;
-  font-weight:600;
-  color:#444;
+  margin-bottom:20px;
+  font-weight:bold;
 }
 
 .passwordBox input{
@@ -65,66 +64,44 @@ body{
   border-radius:8px;
   border:1px solid #ccc;
   text-align:center;
-  letter-spacing:3px;
 }
 
 .passwordBox button{
   margin-left:15px;
-  padding:14px 28px;
+  padding:14px 30px;
   font-size:18px;
-  font-weight:600;
+  font-weight:bold;
   cursor:pointer;
   border:none;
   border-radius:10px;
   background:#ff2f92;
   color:white;
-  box-shadow:0 6px 15px rgba(255,47,146,0.35);
-  transition:transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.passwordBox button:hover{
-  transform:scale(1.05);
-  box-shadow:0 10px 25px rgba(255,47,146,0.45);
-}
-
-/* ---------- Card Interface ---------- */
+/* ---------- Card ---------- */
 .card{
-  width:420px;          /* Bigger card */
-  aspect-ratio:4/5;
+  width:420px;
+  height:520px;      /* aspect-ratio remove chesam */
   background:white;
   border-radius:24px;
   padding:28px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.18);
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
   overflow-y:auto;
 }
 
+/* ---------- Card Text ---------- */
 .cardText{
   font-size:24px;
   line-height:1.6;
-  font-weight:500;
-  background:linear-gradient(
-    90deg,
-    #ff2f92,
-    #ff7ab8,
-    #ff2f92
-  );
-  background-size:200% auto;
+  background:linear-gradient(90deg,#ff2f92,#ff7ab8,#ff2f92);
+  background-size:200% 100%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:gradientMove 4s linear infinite;
-  white-space:pre-line;   /* IMPORTANT: keeps enters exactly */
+  white-space:pre-line;
 }
 
 @keyframes gradientMove{
-  from{ background-position:0% center; }
-  to{ background-position:200% center; }
-}
-
-/* Scrollbar soft */
-.card::-webkit-scrollbar{
-  width:6px;
-}
-.card::-webkit-scrollbar-thumb{
-  background:#ffd1e4;
-  border-radius:10px;
+  0%{background-position:0%}
+  100%{background-position:200%}
 }
