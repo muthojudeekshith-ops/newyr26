@@ -11,6 +11,7 @@ body {
   overflow: hidden;
 }
 
+/* Screens */
 .screen {
   display: none;
   width: 100%;
@@ -80,8 +81,13 @@ body {
   line-height: 1.6;
 }
 
-#replayBtn {
+.btn-row {
+  display: flex;
+  gap: 15px;
   margin-top: 15px;
+}
+
+.btn-row button {
   padding: 8px 16px;
   border-radius: 10px;
   border: none;
@@ -91,7 +97,27 @@ body {
   cursor: pointer;
 }
 
-/* Floating hearts (background) */
+/* Interface 4 */
+#playVideoBtn {
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 50px;
+  border: none;
+  background: #ff2f7d;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#loveVideo {
+  display: none;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 18px;
+  margin-top: 20px;
+}
+
+/* Background effects */
 #hearts, #confetti {
   position: fixed;
   inset: 0;
@@ -108,11 +134,12 @@ body {
 }
 
 @keyframes floatUp {
-  from { transform: translateY(0) scale(1); }
-  to { transform: translateY(-110vh) scale(1.6); opacity: 0; }
+  to {
+    transform: translateY(-110vh) scale(1.6);
+    opacity: 0;
+  }
 }
 
-/* Confetti */
 .confetti-piece {
   position: absolute;
   top: -20px;
