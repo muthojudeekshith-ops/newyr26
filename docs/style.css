@@ -8,9 +8,6 @@
 body {
   height: 100vh;
   background: linear-gradient(135deg, #ffe6ee, #fff5f8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
@@ -22,7 +19,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .screen.active {
@@ -85,7 +82,7 @@ body {
 
 #replayBtn {
   margin-top: 15px;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 10px;
   border: none;
   background: #ff2f7d;
@@ -94,28 +91,37 @@ body {
   cursor: pointer;
 }
 
-/* Hearts */
-#hearts {
+/* Floating hearts (background) */
+#hearts, #confetti {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .heart {
   position: absolute;
   bottom: -20px;
-  animation: floatUp linear forwards;
   opacity: 0.8;
   filter: drop-shadow(0 0 6px rgba(255,100,150,0.6));
+  animation: floatUp linear forwards;
 }
 
 @keyframes floatUp {
-  from {
-    transform: translateY(0) scale(1);
-  }
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-110vh) scale(1.6); opacity: 0; }
+}
+
+/* Confetti */
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
   to {
-    transform: translateY(-110vh) scale(1.6);
+    transform: translateY(110vh) rotate(720deg);
     opacity: 0;
   }
 }
