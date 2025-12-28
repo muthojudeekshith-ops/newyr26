@@ -9,6 +9,9 @@ const animatedText = document.getElementById("animatedText");
 const replayBtn = document.getElementById("replayBtn");
 const music = document.getElementById("bgMusic");
 
+const heartsContainer = document.getElementById("hearts");
+const confettiContainer = document.getElementById("confetti");
+
 const PASSWORD = "c5d9";
 
 const text = `Cheers to another year of loving you 💖 Happy New Year BABEE😉😘 !
@@ -24,7 +27,7 @@ const text = `Cheers to another year of loving you 💖 Happy New Year BABEE😉
 	   you are not js a part of my life . You are my love, my world , my comfort & mine forever 💞
 	   I LOVE YOU HANSINI 💕💌 `;
 
-/* Screen Navigation */
+/* Navigation */
 helloText.onclick = () => {
   screen1.classList.remove("active");
   screen2.classList.add("active");
@@ -42,7 +45,7 @@ submitBtn.onclick = () => {
   }
 };
 
-/* Typing Animation */
+/* Typing */
 let index = 0;
 function startTyping() {
   animatedText.textContent = "";
@@ -55,6 +58,8 @@ function type() {
     animatedText.textContent += text.charAt(index);
     index++;
     setTimeout(type, 30);
+  } else {
+    startConfetti(); // 🎉 END CONFETTI
   }
 }
 
@@ -63,24 +68,34 @@ replayBtn.onclick = () => {
   startTyping();
 };
 
-/* Hearts Generator (only Interface 3) */
-const heartsContainer = document.getElementById("hearts");
-const emojis = ["💗","💖","💘","🤍"];
-
+/* Floating hearts */
+const heartEmojis = ["💗","💖","💘","🤍"];
 function startHearts() {
   setInterval(() => {
     if (!screen3.classList.contains("active")) return;
 
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+    h.style.left = Math.random()*100 + "vw";
+    h.style.fontSize = 14 + Math.random()*20 + "px";
+    h.style.animationDuration = 6 + Math.random()*4 + "s";
+    heartsContainer.appendChild(h);
+    setTimeout(() => h.remove(), 10000);
+  }, 500);
+}
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = 14 + Math.random()*20 + "px";
-    heart.style.animationDuration = 6 + Math.random()*4 + "s";
-
-    heartsContainer.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 10000);
-  }, 400);
+/* 🎊 MIX CONFETTI */
+const confettiEmojis = ["🎉","🎊","💖","💗","🤍","🌸"];
+function startConfetti() {
+  for (let i = 0; i < 120; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti-piece";
+    c.textContent = confettiEmojis[Math.floor(Math.random()*confettiEmojis.length)];
+    c.style.left = Math.random()*100 + "vw";
+    c.style.fontSize = 14 + Math.random()*18 + "px";
+    c.style.animationDuration = 3 + Math.random()*3 + "s";
+    confettiContainer.appendChild(c);
+    setTimeout(() => c.remove(), 7000);
+  }
 }
