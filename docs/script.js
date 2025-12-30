@@ -1,116 +1,79 @@
-const screens = {
-  s1: document.getElementById("screen1"),
-  s2: document.getElementById("screen2"),
-  s3: document.getElementById("screen3"),
-  s4: document.getElementById("screen4")
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
+const screen3 = document.getElementById("screen3");
+const bgMusic = document.getElementById("bgMusic");
+
+/* Interface navigation */
+document.getElementById("helloFamily").onclick = () => {
+  screen1.classList.remove("active");
+  screen2.classList.add("active");
 };
 
-const helloText = document.getElementById("helloText");
-const submitBtn = document.getElementById("submitBtn");
-const passwordInput = document.getElementById("passwordInput");
+document.getElementById("submitPassword").onclick = () => {
+  const pass = document.getElementById("passwordInput").value;
+  if (pass === "c5d9") {
+    screen2.classList.remove("active");
+    screen3.classList.add("active");
 
-const animatedText = document.getElementById("animatedText");
-const replayBtn = document.getElementById("replayBtn");
-const nextBtn = document.getElementById("nextBtn");
+    bgMusic.volume = 0.25;
+    bgMusic.play();
 
-const backBtn = document.getElementById("backBtn");
-const playVideoBtn = document.getElementById("playVideoBtn");
-const pauseBtn = document.getElementById("pauseBtn");
-const replayVideoBtn = document.getElementById("replayVideoBtn");
-
-const music = document.getElementById("bgMusic");
-const video = document.getElementById("loveVideo");
-const videoControls = document.querySelector(".video-controls");
-
-const PASSWORD = "c5d9";
-
-/* EXACT TEXT */
-const text = `Cheers to another year of loving you 💖 Happy New Year BABEE😉😘 !
-	   We are stepping into the new year 2026 👩🏻‍❤️‍👨🏻👣
-	   I just wanted you to know how deeply i have fallen for you till the last sec of the year ,			
-	   and still i'm falling for you even at this movement ..
-	   I hope this year brings us more love, more fun, deeper emotions, and countless beautiful memories together 🤍🎥 .
-	   I believe this year will be warmer, stronger, and more magical for us 🫂
-	   and I promise you 🫳🏻 that I'LL HOLD YOUR HAND MORE TGHTER 👫🏻 IN ANY SITUATION & IN ANY CHALLENGEAS . 
-	   
-		
-	   And HANUU.. Thanks for being my yestarday, today & tomorrow 🥹🙃🫶🏻
-	   you are not js a part of my life . You are my love, my world , my comfort & mine forever 💞
-	   I LOVE YOU HANSINI 💕💌 `;
-
-function show(screen) {
-  Object.values(screens).forEach(s => s.classList.remove("active"));
-  screen.classList.add("active");
-}
-
-/* Interface 1 → 2 */
-helloText.onclick = () => show(screens.s2);
-
-/* Interface 2 → 3 */
-submitBtn.onclick = () => {
-  if (passwordInput.value === PASSWORD) {
-    show(screens.s3);
-    music.play();
     startTyping();
+    startParticles();
   } else {
     alert("Wrong Password");
   }
 };
 
-/* Typing */
+/* Auto year logic */
+function getNewYear() {
+  const now = new Date();
+  let year = now.getFullYear() + 1;
+
+  const dec31 = new Date(now.getFullYear(), 11, 31, 23, 58);
+  if (now >= dec31) year = now.getFullYear() + 1;
+  if (year > 2040) year = 2040;
+
+  return year;
+}
+
+/* EXACT TEXT – NO CHANGE */
+const fullText = `HAPPY NEW YEAR MY FAMILY ${getNewYear()} 💌
+I hope we will have more joy & happiness in this year 🫶🏻
+
+
+                                                YOUR DEEKSHITH WITH LOVE 🫶🏻`;
+
 let index = 0;
+
+/* Typing + horizontal scroll */
 function startTyping() {
-  animatedText.textContent = "";
-  index = 0;
-  type();
+  const target = document.getElementById("animatedText");
+  const card = target.parentElement;
+
+  const interval = setInterval(() => {
+    target.textContent += fullText.charAt(index);
+    index++;
+
+    card.scrollLeft = card.scrollWidth; // horizontal auto scroll
+
+    if (index >= fullText.length) clearInterval(interval);
+  }, 40);
 }
-function type() {
-  if (index < text.length) {
-    animatedText.textContent += text.charAt(index++);
-    setTimeout(type, 30);
-  }
+
+/* Floating emoji particles */
+const emojis = ["🤗", "🥳", "💐", "🎂"];
+
+function startParticles() {
+  setInterval(() => {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+    particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.animationDuration = 4 + Math.random() * 3 + "s";
+
+    document.getElementById("particles").appendChild(particle);
+
+    setTimeout(() => particle.remove(), 7000);
+  }, 400);
 }
-
-/* Reload typing */
-replayBtn.onclick = startTyping;
-
-/* Interface 3 → 4 */
-nextBtn.onclick = () => {
-  music.pause();
-  show(screens.s4);
-};
-
-/* BACK (one step back) */
-backBtn.onclick = () => {
-  video.pause();
-  video.currentTime = 0;
-  video.style.display = "none";
-  videoControls.style.display = "none";
-  playVideoBtn.style.display = "block";
-  show(screens.s3);
-};
-
-/* Video play */
-playVideoBtn.onclick = () => {
-  playVideoBtn.style.display = "none";
-  video.style.display = "block";
-  videoControls.style.display = "flex";
-  video.play();
-};
-
-/* Pause */
-pauseBtn.onclick = () => {
-  if (video.paused) {
-    video.play();
-    pauseBtn.textContent = "⏸ Pause";
-  } else {
-    video.pause();
-    pauseBtn.textContent = "▶ Resume";
-  }
-};
-
-/* Replay video */
-replayVideoBtn.onclick = () => {
-  video.currentTime = 0;
-  video.play();
-};
