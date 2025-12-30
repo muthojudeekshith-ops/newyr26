@@ -64,12 +64,17 @@ body {
 .card {
   width: 80%;
   max-width: 420px;
-  aspect-ratio: 4 / 5;
+
+  height: 65vh;          /* 🔑 height FIXED */
+  max-height: 500px;     /* desktop safety */
+
   background: white;
   border-radius: 20px;
   padding: 20px;
-  overflow-y: auto;
+
+  overflow-y: auto;      /* ONLY text scroll */
 }
+
 
 .btns {
   margin-top: 15px;
