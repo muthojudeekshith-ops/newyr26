@@ -2,64 +2,130 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
   height: 100vh;
-  background: linear-gradient(180deg, #ffe6ef, #fff);
+  background: linear-gradient(135deg, #ffe6ee, #fff5f8);
   overflow: hidden;
 }
 
-/* Screens */
+/* screens */
 .screen {
   display: none;
-  width: 100%;
   height: 100%;
+  width: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 .screen.active {
   display: flex;
 }
 
-/* Interface 1 */
-#helloFamily {
-  color: #ff4f9a;
+/* interface 1 */
+#helloLove {
   font-size: 3rem;
   font-weight: bold;
+  color: #ff2f7d;
   cursor: pointer;
-  animation: pulse 1.5s infinite;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-
-/* Password box */
-.password-box {
-  background: white;
+/* interface 2 */
+.box {
+  background: #fff;
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 14px;
   display: flex;
   gap: 10px;
 }
 
-.password-box input {
+.box input {
   padding: 10px;
-  font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-.password-box button {
-  padding: 10px 15px;
+.box button {
+  padding: 10px 18px;
   border: none;
-  background: #ff4f9a;
-  color: white;
   border-radius: 8px;
+  background: #ff2f7d;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* interface 3 */
+.card {
+  width: 80%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.btns {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.btns button {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #ff2f7d;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* interface 4 */
+#backBtn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border: none;
+  background: #ff2f7d;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px 14px;
   cursor: pointer;
+}
+
+#playBtn {
+  padding: 14px 30px;
+  border-radius: 40px;
+  border: none;
+  background: #ff2f7d;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#video {
+  display: none;
+  width: 90%;
+  max-width: 420px;
+  margin-top: 20px;
+  border-radius: 18px;
+}
+
+.v-controls {
+  display: none;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.v-controls button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #ff2f7d;
+  color: #fff;
+  font-weight: bold;
+}
