@@ -20,7 +20,7 @@ body {
   align-items: center;
   flex-direction: column;
   position: relative;
-  overflow: hidden;   /* 🔑 THIS LINE FIXES IT */
+  overflow: hidden;   
 }
 
 
@@ -65,16 +65,20 @@ body {
   width: 80%;
   max-width: 420px;
 
-  height: 65vh;          /* 🔑 height FIXED */
-  max-height: 500px;     /* desktop safety */
+  height: 65vh;        /* 🔑 fixed height */
+  max-height: 500px;
 
   background: white;
   border-radius: 20px;
   padding: 20px;
 
-  overflow-y: auto;      /* ONLY text scroll */
+  overflow-y: auto;    /* ✅ vertical scroll */
+  overflow-x: hidden;  /* ❌ no horizontal */
 }
-
+.card pre {
+  white-space: pre-wrap;   /* enters exact ga maintain avuthayi */
+  word-break: break-word; /* long lines / emojis valla overflow avvakunda */
+}
 
 .btns {
   margin-top: 15px;
