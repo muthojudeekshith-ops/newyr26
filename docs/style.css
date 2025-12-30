@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
   height: 100vh;
-  background: linear-gradient(135deg, #ffe6ee, #fff5f8);
+  background: linear-gradient(180deg, #ffe6ef, #fff);
   overflow: hidden;
 }
 
@@ -16,11 +16,9 @@ body {
   display: none;
   width: 100%;
   height: 100%;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  z-index: 2;
+  flex-direction: column;
 }
 
 .screen.active {
@@ -28,114 +26,40 @@ body {
 }
 
 /* Interface 1 */
-#helloText {
+#helloFamily {
+  color: #ff4f9a;
   font-size: 3rem;
   font-weight: bold;
-  color: #ff2f7d;
   cursor: pointer;
+  animation: pulse 1.5s infinite;
 }
 
-/* Interface 2 */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Password box */
 .password-box {
   background: white;
   padding: 25px;
-  border-radius: 14px;
+  border-radius: 15px;
   display: flex;
   gap: 10px;
 }
 
 .password-box input {
   padding: 10px;
+  font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
 .password-box button {
-  padding: 10px 16px;
+  padding: 10px 15px;
+  border: none;
+  background: #ff4f9a;
+  color: white;
   border-radius: 8px;
-  border: none;
-  background: #ff2f7d;
-  color: white;
-  font-weight: bold;
-}
-
-/* Interface 3 */
-.card {
-  width: 80%;
-  max-width: 420px;
-  aspect-ratio: 4 / 5;
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.btn-row {
-  margin-top: 15px;
-  display: flex;
-  gap: 15px;
-}
-
-.btn-row button {
-  padding: 8px 16px;
-  border-radius: 10px;
-  border: none;
-  background: #ff2f7d;
-  color: white;
-  font-weight: bold;
-}
-
-/* Interface 4 */
-#backBtn {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  border: none;
-  background: #ff2f7d;
-  color: white;
-  border-radius: 50%;
-  padding: 10px 14px;
-  font-size: 16px;
   cursor: pointer;
-}
-
-#playVideoBtn {
-  padding: 14px 28px;
-  border-radius: 50px;
-  border: none;
-  background: #ff2f7d;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-#loveVideo {
-  display: none;
-  width: 90%;
-  max-width: 420px;
-  border-radius: 18px;
-  margin-top: 20px;
-}
-
-.video-controls {
-  display: none;
-  margin-top: 10px;
-  gap: 15px;
-}
-
-.video-controls button {
-  padding: 8px 14px;
-  border-radius: 10px;
-  border: none;
-  background: #ff2f7d;
-  color: white;
-  font-weight: bold;
-}
-
-/* Effects layers */
-#hearts, #confetti {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  }
